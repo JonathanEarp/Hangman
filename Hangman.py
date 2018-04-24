@@ -52,15 +52,15 @@ while x==1: #main loop
                 continue
         else: #if guess is in word
             for letter in location_of_guessed_letters:
-                specific_location = location_of_guessed_letters[i]
-                answer.remove(' _ ')
-                answer.insert(specific_location, guess)
-                i+=1
-            answer_word = "".join(answer)
-            print(answer_word)
-            if answer_word == word:
+                specific_location = location_of_guessed_letters[i] #individual location of guessed letter
+                answer.remove(' _ ') #removes placeholders in answer
+                answer.insert(specific_location, guess) #inserts correct guess
+                i+=1 #increases list item for location of guessed letter
+            answer_word = "".join(answer) #concattenates answer into one string
+            print(answer_word) #lets user see their progress in the answer
+            if answer_word == word: #compares answer to origional word for winning condition
                 print("you win")
-                break
+                break #breaks to new game
             continue
         
                 
