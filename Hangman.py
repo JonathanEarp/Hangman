@@ -67,7 +67,7 @@ while x==1: #main loop
             for letter in location_of_guessed_letters:
                 specific_location = location_of_guessed_letters[i] #individual location of guessed letter
                 i+=1 #increases list item for location of guessed letter
-                answer[specific_location] = guess
+                answer[specific_location] = guess #replaces list item with guess
                 answer_word = "".join(answer) #concattenates answer into one string
                 
             print(answer_word) #lets user see their progress in the answer
