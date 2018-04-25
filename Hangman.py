@@ -43,8 +43,7 @@ def gallows(wrong_guesses):
         print(gallows_progress[i])
 
 while True: #main loop
-    Max = len(word_list)
-    word = word_list[random.randint(0, Max - 1)] #pulls a word out of the wordlist
+    word = word_list[random.randint(0, len(word_list) - 1)] #pulls a word out of the wordlist
     n = len(word) #The len function gets the number of items in a list or string
     answer = [' _ '] *n
     wrong_guess = []
