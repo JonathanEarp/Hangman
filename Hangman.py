@@ -62,12 +62,20 @@ while True: #main loop
         
         guess = str(input("Guess a letter:\n> ")) #define as string for index/count
         guess = guess.lower() # converts input to lowercase
+        
         location_of_guessed_letters = list_duplicates_of(word,guess)
         i = 0
-        
-        if guess in wrong_guess or guess in answer:
-                print("You can't choose the same letter twice \n")
-                continue
+
+        #error handling conditions
+        if len(guess) != 1: 
+            print("Please enter 1 letter\n")
+            continue
+        elif guess.isalpha() == False: #checks if input is a character or number
+            print("Please enter a letter, not a number\n")
+            continue
+        elif guess in wrong_guess or guess in answer:
+            print("You can't choose the same letter twice \n")
+            continue
             
         elif location_of_guessed_letters == []: #if guess is not in word
             print(guess + " is not in the word, try again\n")
