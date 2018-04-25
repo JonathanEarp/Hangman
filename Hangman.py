@@ -31,6 +31,7 @@ while x==1: #main loop
     word = wordlist[random.randint(0,4)] #pulls a word out of the wordlist
     n = len(word) #The len function gets the number of items in a list or string
     answer = [' _ '] *n
+    wrong_guess = []
     score = 6
 
     print(answer) #Shows the user how many letters there are in the word
@@ -45,12 +46,17 @@ while x==1: #main loop
         if location_of_guessed_letters == []: #if guess is not in word
             print(guess + " is not in the word, try again\n")
             score -= 1
+            wrong_guess.append(guess) #adds wrong guess to wrong_guess list
+            print('Wrong Guess: ', wrong_guess) #prints wrong guesses for user
             if score <= 0:
                 print("You lose!")
                 break
             else:
                 continue
         else: #if guess is in word
+            if guess in answer:
+                print("You can't choose the same letter twice \n")
+                continue
             for letter in location_of_guessed_letters:
                 specific_location = location_of_guessed_letters[i] #individual location of guessed letter
                 answer.remove(' _ ') #removes placeholders in answer
