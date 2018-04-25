@@ -1,7 +1,7 @@
 import random
 
 x = 1
-wordlist = ["apple","pear","glasses","crow","orange"]
+wordlist = ["apple","pear","glasses","crow","orange", "wall", "crazy", "grape", "cream"]
 
 def list_duplicates_of(seq,item): #if a letter has multiple instances in a word
     start_at = -1
@@ -27,8 +27,8 @@ while x==1: #main loop
     print("|                  \n")
     print("|__________________\n")
 
-
-    word = wordlist[random.randint(0,4)] #pulls a word out of the wordlist
+    Max = len(wordlist)
+    word = wordlist[random.randint(0,Max-1)] #pulls a word out of the wordlist
     n = len(word) #The len function gets the number of items in a list or string
     answer = [' _ '] *n
     wrong_guess = []
@@ -39,34 +39,43 @@ while x==1: #main loop
 
     y = 1
     while y==1: #guess loop
+        
         guess = str(input("Guess a letter:")) #define as string for index/count
         
         location_of_guessed_letters = list_duplicates_of(word,guess)
         i = 0
+        
         if location_of_guessed_letters == []: #if guess is not in word
             print(guess + " is not in the word, try again\n")
             score -= 1
             wrong_guess.append(guess) #adds wrong guess to wrong_guess list
             print('Wrong Guess: ', wrong_guess) #prints wrong guesses for user
+            print(answer_word) #lets user see their progress in the answer
+            
             if score <= 0:
                 print("You lose!")
                 break
+            
             else:
                 continue
         else: #if guess is in word
+            
             if guess in answer:
                 print("You can't choose the same letter twice \n")
                 continue
+            
             for letter in location_of_guessed_letters:
                 specific_location = location_of_guessed_letters[i] #individual location of guessed letter
-                answer.remove(' _ ') #removes placeholders in answer
-                answer.insert(specific_location, guess) #inserts correct guess
                 i+=1 #increases list item for location of guessed letter
-            answer_word = "".join(answer) #concattenates answer into one string
+                answer[specific_location] = guess
+                answer_word = "".join(answer) #concattenates answer into one string
+                
             print(answer_word) #lets user see their progress in the answer
+            
             if answer_word == word: #compares answer to origional word for winning condition
                 print("you win")
                 break #breaks to new game
+            
             continue
         
                 
