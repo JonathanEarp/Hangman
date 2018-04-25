@@ -66,7 +66,7 @@ while x==1: #main loop
         location_of_guessed_letters = list_duplicates_of(word,guess)
         i = 0
         
-        if location_of_guessed_letters == []: #if guess is not in word
+        if location_of_guessed_letters == [] and not guess in wrong_guess: #if guess is not in word
             print(guess + " is not in the word, try again\n")
             score -= 1
             wrong_guess.append(guess) #adds wrong guess to wrong_guess list
@@ -80,12 +80,11 @@ while x==1: #main loop
             
             else:
                 continue
-        else: #if guess is in word
-            
-            if guess in answer or guess in wrong_guess:
+        elif guess in wrong_guess or guess in answer:
                 print("You can't choose the same letter twice \n")
                 continue
             
+        else: #if guess is in word
             for letter in location_of_guessed_letters:
                 specific_location = location_of_guessed_letters[i] #individual location of guessed letter
                 i += 1 #increases list item for location of guessed letter
@@ -95,7 +94,7 @@ while x==1: #main loop
             print(answer_word) #lets user see their progress in the answer
             
             if answer_word == word: #compares answer to origional word for winning condition
-                print("you win")
+                print("You've escaped the noose this time, but I've got my eye on you, buster.")
                 break #breaks to new game
             
             continue
