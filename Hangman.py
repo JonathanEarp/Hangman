@@ -61,7 +61,7 @@ while True: #main loop
     while True: #guess loop
         
         guess = str(input("Guess a letter:\n> ")) #define as string for index/count
-        
+        guess = guess.lower() # converts input to lowercase
         location_of_guessed_letters = list_duplicates_of(word,guess)
         i = 0
         
