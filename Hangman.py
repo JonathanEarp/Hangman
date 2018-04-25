@@ -66,7 +66,11 @@ while x==1: #main loop
         location_of_guessed_letters = list_duplicates_of(word,guess)
         i = 0
         
-        if location_of_guessed_letters == [] and not guess in wrong_guess: #if guess is not in word
+        if guess in wrong_guess or guess in answer:
+                print("You can't choose the same letter twice \n")
+                continue
+            
+        elif location_of_guessed_letters == []: #if guess is not in word
             print(guess + " is not in the word, try again\n")
             score -= 1
             wrong_guess.append(guess) #adds wrong guess to wrong_guess list
@@ -79,9 +83,6 @@ while x==1: #main loop
                 break
             
             else:
-                continue
-        elif guess in wrong_guess or guess in answer:
-                print("You can't choose the same letter twice \n")
                 continue
             
         else: #if guess is in word
