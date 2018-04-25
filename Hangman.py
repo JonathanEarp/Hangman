@@ -43,7 +43,7 @@ def gallows(wrong_guesses):
     for i in range(0, len(gallows_full)):
         print(gallows_progress[i])
 
-while x==1: #main loop
+while True: #main loop
     Max = len(wordlist)
     word = wordlist[random.randint(0, Max - 1)] #pulls a word out of the wordlist
     n = len(word) #The len function gets the number of items in a list or string
@@ -57,9 +57,9 @@ while x==1: #main loop
     print(answer) #Shows the user how many letters there are in the word
     print("\n")
 
-    y = 1
+    
 
-    while y == 1: #guess loop
+    while True: #guess loop
         
         guess = str(input("Guess a letter:\n> ")) #define as string for index/count
         
@@ -76,12 +76,13 @@ while x==1: #main loop
             wrong_guess.append(guess) #adds wrong guess to wrong_guess list
             print('Wrong Guess: ', wrong_guess) #prints wrong guesses for user
             gallows(len(wrong_guess))
+            answer_word = "".join(answer) #concattenates answer into one string
             print(answer_word) #lets user see their progress in the answer
             
             if score <= 0:
                 print("You lose!")
                 break
-            
+                
             else:
                 continue
             
@@ -96,6 +97,11 @@ while x==1: #main loop
             
             if answer_word == word: #compares answer to origional word for winning condition
                 print("You've escaped the noose this time, but I've got my eye on you, buster.")
-                break #breaks to new game
-            
+                break
+                
             continue
+    x = int(input("would you like to continue? Enter 1 to continue, any other key to quit:")) #exit/continue for main loop
+    if x == 1:
+        continue
+    else:
+        break
